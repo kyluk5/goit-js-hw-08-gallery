@@ -1,11 +1,18 @@
 import descriptionImg from "./gallery-items.js";
-// console.log(gallery);
 import { returnHtml } from "./returnHtml.js";
-// console.log(returnHtml);
 
 const gallery = document.querySelector(".gallery");
-// console.log(gallery);
-
 const allEl = descriptionImg.map((item) => returnHtml(item)).join("");
-// console.log(allEl);
 gallery.insertAdjacentHTML("beforeend", allEl);
+// console.dir(gallery);
+const lightbox = document.querySelector(".lightbox");
+
+gallery.addEventListener("click", modalFn);
+function modalFn(even) {
+  even.preventDefault();
+  if (even.target.nodeName !== "IMG") return;
+  lightbox.classList.add("is-open");
+  //   const source = even.target.dataset.source;
+  //   console.log(source);
+  //   even.target.src = source;
+}
